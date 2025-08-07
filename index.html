@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>de Miffy para Isa</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fffaf0;
+            text-align: center;
+            padding: 1.5em;
+        }
+
+        .miffy-img {
+            max-height: 300px;
+            width: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="miffy" class="miffy-img" src="" alt="Miffy says hi!">
+    <div class="message" id="message">...</div>
+
+    <script>
+        const messages = [
+            "Tu puedes con todo 🌟",
+            "Intenta terminar lo que estás haciendo antes de cambiar!",
+            "Tómate varias pausitas hoy ☕",
+            "Todo va a estar bien🧡",
+            "Acuérdate de descansar también 🐰",
+            "Lo estás haciendo mejor de lo que crees!",
+            "Hoy va a ser un día bacán",
+            "Avances chiquititos igual cuentan!",
+            "Un salto a la vez 🐇",
+            "Lo tienes controlado. En serio!",
+            "Tecito ☕, mantita y una buena serie. Lo demás se arregla.",
+            "Haz resuelto cosas mucho más difíciles que ese problema que te tiene dando vueltas",
+            "Siempre se puede resetear el día con una siesta jiji",
+            "Si te sientes chata, piensa en tu próximo craft",
+            "Tómate un momento hoy para manifestar qué te gustaría encontrar en el rataplan",
+            "Hoy podrías escribirle un mensaje o llamar a alguien de tu familia",
+            "Tus amigos son afortunados de tenerte de amiga :)",
+            "Estar intentando hacer algo difícil ya es una victoria",
+            "🐇 Usa solo palabras amables contigo hoy",
+            "Tu creatividad te puede ayudar a encontrar la solución a todo",
+            "Tu misión hoy es probar algo nuevo",
+            "Intenta esforzarte al 20 % en lugar de al 100 %... quizas te sorprendas",
+            "Relaja la mandíbula, baja los hombros, respira profundo",
+            "Has tomado suficiente agua hoy?",
+            "Hoy haz lo que tienes que hacer como si fuera un ritual y no una tarea",
+            "Date permiso para seguir tu curiosidad un rato",
+            "Hoy deberías hacer un quizz de buzzfeed",
+            "Para todas tus dudas hoy, piensa 'qué diría Miffy?'",
+            "Miffy dijo que te iba a conceder un deseo. Piensa en tu deseo y agita la bola de cristal",
+            "Miffy no tiene motivación hoy tampoco jajaja prueba otro día"
+        ];
+
+        const images = [
+            "images/1.png",
+            "images/2.png",
+            "images/3.png",
+            "images/4.png",
+            "images/5.png",
+            "images/6.png",
+            "images/7.png",
+            "images/8.png",
+            "images/9.png",
+            "images/10.png",
+            "images/11.png",
+            "images/12.png",
+        ];
+
+        // Hash function to turn a string into a number
+    function hashString(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return Math.abs(hash);
+    }
+
+    // Use today's date as the seed
+    const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+    const seed = hashString(today);
+
+    const msgIndex = seed % messages.length;
+    const imgIndex = seed % images.length;
+
+    document.getElementById("message").textContent = messages[msgIndex];
+    document.getElementById("miffy").src = images[imgIndex];
+    </script>
+</body>
+
+</html>
